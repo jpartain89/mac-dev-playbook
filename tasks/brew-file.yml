@@ -1,8 +1,7 @@
+---
+
 - name: Checking (and if not, overwriting) The BrewFile
-  lineinfile:
-    dest: ~/.config/brewfile/Brewfile
-    line: "{{ brewfile_git_repo }}"
-    backup: yes
+  script: 'brew-file set_repo -r {{ brewfile_git_repo }}'
 
 - name: Brew-file Pull
   shell: 'brew-file pull'
