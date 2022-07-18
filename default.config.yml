@@ -65,7 +65,6 @@ dockitems_persist:
 - name: "Feedback Assistant"
   pos: 19
   path: "/Applications/Feedback Assistant.app"
-  pos: 20
 
 configure_sudoers: true
 sudoers_custom_config: |
