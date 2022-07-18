@@ -11,6 +11,8 @@ homebrew_installed_packages:
   - wget
   - wrk
 
+brewfile_git_repo: 'git jpartain89/brewfile-imac_desktop'
+
 homebrew_cask_apps:
   - firefox
   - licecap
