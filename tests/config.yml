@@ -10,6 +10,7 @@ homebrew_installed_packages:
   - pv
   - wget
   - wrk
+  - rcmdnk/file/brew-file
 
 brewfile_git_repo: 'git jpartain89/brewfile-imac_desktop'
 
