@@ -1,10 +1,10 @@
 ---
 
 - name: Checking (and if not, overwriting) The BrewFile
-  script: 'brew-file set_repo -r {{ brewfile_git_repo }}'
+  shell: '/usr/loca/bin/brew-file set_repo -r {{ brewfile_git_repo }}'
 
 - name: Brew-file Pull
-  shell: 'brew-file pull'
+  shell: '/usr/loca/bin/brew-file pull'
 
 - name: Running brew-file install
-  shell: 'brew-file install'
+  shell: '/usr/local/bin/brew-file install'
