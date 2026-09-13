@@ -12,28 +12,35 @@
         - "{{ playbook_dir }}/config.yml"
       tags: ['always']
 
-  roles:
-    - role: elliotweiser.osx-command-line-tools
-    - role: geerlingguy.mac.homebrew
+  tasks:
+    - name: OSx Command Line Tools
+      import_role:
+        name: elliotweiser.osx-command-line-tools
+
+    - name: geerlingguy.mac.homebrew
+      import_role:
+        name: geerlingguy.mac.homebrew
       tags: ['homebrew']
-    - role: geerlingguy.dotfiles
-      when: configure_dotfiles
-      tags: ['dotfiles']
-    - role: geerlingguy.mac.mas
-      when: (mas_installed_apps | length > 0) or (mas_installed_app_ids | length > 0)
+
+    - name: brew-file.yml
+      import_tasks: tasks/brew-file.yml
+      tags: ['homebrew']
+
+    - name: geerlingguy.mac.mas
+      import_role:
+        name: geerlingguy.mac.mas
+      when: (mas_installed_apps | default([]) | length > 0) or (mas_installed_app_ids | default([]) | length > 0)
       tags: ['mas']
-    - role: geerlingguy.mac.dock
+
+    - name: geerlingguy.mac.dock
+      import_role:
+        name: geerlingguy.mac.dock
       when: configure_dock
       tags: ['dock']
 
-  tasks:
     - import_tasks: tasks/sudoers.yml
       when: configure_sudoers
       tags: ['sudoers']
-
-    - import_tasks: tasks/terminal.yml
-      when: configure_terminal
-      tags: ['terminal']
 
     - import_tasks: tasks/osx.yml
       when: configure_osx
@@ -42,13 +49,7 @@
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
 
-    - import_tasks: tasks/sublime-text.yml
-      when: configure_sublime
-      tags: ['sublime-text']
-
-    - name: Run post-provision task files in a block.
-      tags: ['post']
-      block:
+    - block:
         - name: Run configured post-provision ansible task files.
           include_tasks: "{{ outer_item }}"
           loop_control:

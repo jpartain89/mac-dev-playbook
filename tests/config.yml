@@ -9,6 +9,9 @@ homebrew_installed_packages:
   - pv
   - wget
   - wrk
+  - rcmdnk/file/brew-file
+
+brewfile_git_repo: 'jpartain89/brewfile-imac_desktop'
 
 homebrew_cask_apps:
   - firefox
