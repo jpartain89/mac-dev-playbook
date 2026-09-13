@@ -1,6 +1,4 @@
 ---
-downloads: ~/.ansible-downloads/
-
 configure_dotfiles: true
 configure_terminal: true
 configure_osx: true
@@ -73,6 +71,7 @@ sudoers_custom_config: |
 dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
 dotfiles_repo_accept_hostkey: true
 dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
+dotfiles_repo_version: master # Replace with your default branch
 dotfiles_files:
   - .zshrc
   - .gitignore
@@ -98,7 +97,7 @@ homebrew_cask_apps: []
 
 brewfile_git_repo: 'jpartain89/brewfile-imac_desktop'
 
-# See `geerlingguy.mas` role documentation for usage instructions.
+# See `geerlingguy.mac.mas` role documentation for usage instructions.
 mas_installed_apps: []
 mas_email: ""
 mas_password: ""
